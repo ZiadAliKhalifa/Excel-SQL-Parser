@@ -41,7 +41,8 @@ public class FileUploadController {
     }
 
     @PostMapping("/")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("mails") String mails,
+    public String handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("mails") String mails
+            , @RequestParam(name = "download", required = false) boolean download,
                                    RedirectAttributes redirectAttributes, HttpServletResponse response) {
         FileParseResults results = null;
 
@@ -51,7 +52,9 @@ public class FileUploadController {
             if (results.isParsingSucceed()) {
                 results.setScriptApplied(scriptExecutor.execute(results.getScript()));
             }
-            //   zipDownload(response,results);
+            if (download) {
+                zipDownload(response, results);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,16 +68,29 @@ public class FileUploadController {
         return "redirect:/";
     }
 
-
     private void zipDownload(HttpServletResponse response, FileParseResults results) throws IOException {
         ZipOutputStream zipOut = new ZipOutputStream(response.getOutputStream());
-
-        ZipEntry zipEntry = new ZipEntry("Script");
-        zipEntry.setSize(results.getFlatObjectScript().length());
-        zipOut.putNextEntry(zipEntry);
-        StreamUtils.copy(
-                IOUtils.toByteArray(new FileInputStream(results.getFlatObjectScript())),
-                zipOut);
+        if (results.isParsingSucceed()) {
+            ZipEntry zipEntry = new ZipEntry("Script.sql");
+            zipEntry.setSize(results.getScript().length());
+            zipOut.putNextEntry(zipEntry);
+            StreamUtils.copy(
+                    IOUtils.toByteArray(new FileInputStream(results.getScript())),
+                    zipOut);
+            zipEntry = new ZipEntry("Flat.txt");
+            zipEntry.setSize(results.getFlatObjectScript().length());
+            zipOut.putNextEntry(zipEntry);
+            StreamUtils.copy(
+                    IOUtils.toByteArray(new FileInputStream(results.getFlatObjectScript())),
+                    zipOut);
+        } else {
+            ZipEntry zipEntry = new ZipEntry("Error.txt");
+            zipEntry.setSize(results.getErrorFile().length());
+            zipOut.putNextEntry(zipEntry);
+            StreamUtils.copy(
+                    IOUtils.toByteArray(new FileInputStream(results.getErrorFile())),
+                    zipOut);
+        }
         zipOut.closeEntry();
 
         zipOut.finish();

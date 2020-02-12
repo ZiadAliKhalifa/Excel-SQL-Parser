@@ -16,8 +16,12 @@
 	<div>
 		<form method="POST" enctype="multipart/form-data" action="/" id="fileUploadForm">
 			<table>
-				<tr><td>1- Mail Results to Recipients [Comma Separated]:</td><td><input type="text" name="mails" /></td></tr>
-				<tr><td>2- File to upload:</td><td><input type="file" name="file" /></td></tr>
+				<tr><td>1- Mail Results to Recipients [Comma Separated]:</td>
+					<td><input type="text" name="mails" /></td></tr>
+				<tr><td>2- File to upload:</td>
+					<td><input type="file" name="file" /></td></tr>
+				<tr><td>3- Flag to download:</td>
+					<td><input type="checkbox" name="download" value="${false}"/></td></tr>
 				<tr>
 					<td></td>
 					<td><input type="submit" value="Upload" onclick="submitForm()" id="submit-button"/></td>
@@ -27,43 +31,5 @@
 		</form>
 	</div>
 </body>
-<!--<script>-->
-<!--	$("#success-msg").hide();-->
-<!--	$("#failure-msg").hide();-->
 
-<!--	function submitForm(){-->
-<!--		// Get form-->
-<!--        var form = $('#fileUploadForm')[0];-->
-
-<!--		// Create an FormData object-->
-<!--        var data = new FormData(form);-->
-<!--        $("#submit-button").prop("disabled", false);-->
-<!--		 $.ajax({-->
-<!--            type: "POST",-->
-<!--            enctype: 'multipart/form-data',-->
-<!--            url: "/",-->
-<!--            data: data,-->
-<!--            processData: false,-->
-<!--            contentType: false,-->
-<!--            cache: false,-->
-<!--            timeout: 600000,-->
-<!--            success: function (data) {-->
-<!--                $("#success-msg").show();-->
-<!--                var blob = data;-->
-<!--				 var fileName = "rkrok";//req.getResponseHeader("fileName") //if you have the fileName header available-->
-<!--				 var link=document.createElement('a');-->
-<!--				 var binaryData = [];-->
-<!--					binaryData.push(data);-->
-<!--					link.href=window.URL.createObjectURL(new Blob(binaryData, {type: "application/zip"}))-->
-<!--				 link.download=fileName;-->
-<!--				 link.click();-->
-<!--                $("#submit-button").prop("disabled", false);-->
-<!--            },-->
-<!--            error: function (e) {-->
-<!--            	$("#failure-msg").show();-->
-<!--                $("#submit-button").prop("disabled", false);-->
-<!--            }-->
-<!--        });-->
-<!--	}-->
-<!--</script>-->
 </html>
