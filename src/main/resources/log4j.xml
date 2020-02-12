@@ -12,7 +12,7 @@
 
     <!-- File Appender -->
     <appender class="org.apache.log4j.DailyRollingFileAppender" name="ROLLING_FILE">
-        <param name="file" value="/data/concept-store/people/${logFileName}"/>
+        <param name="file" value="/${logFileName}"/>
         <param name="datePattern" value="'.'yyyy-MM-dd"/>
         <param name="append" value="true"/>
         <layout class="org.apache.log4j.PatternLayout">
@@ -20,7 +20,7 @@
         </layout>
     </appender>
 
-    <logger name="com.syngenta.snp">
+    <logger name="com.syngenta.portal.data">
         <level value="info"/>
         <appender-ref ref="console"/>
         <appender-ref ref="ROLLING_FILE"/>
