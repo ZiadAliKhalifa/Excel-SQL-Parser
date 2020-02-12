@@ -41,7 +41,7 @@ public class FileUploadController {
     }
 
     @PostMapping("/")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("mails") String mails
+    public String handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam(name = "mails",required = false) String mails
             , @RequestParam(name = "download", required = false) boolean download,
                                    RedirectAttributes redirectAttributes, HttpServletResponse response) {
         FileParseResults results = null;
