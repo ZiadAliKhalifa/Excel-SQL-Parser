@@ -26,15 +26,15 @@ import java.util.stream.Stream;
 @Service
 public class ShortcutSheetParser extends AbstractSheetParser {
     private static FieldDefinition NAME_DEFINITION =
-            new FieldDefinition("Shortcut Name", Boolean.TRUE, 100, FieldType.TEXT);
+            new FieldDefinition("Shortcut Name", Boolean.TRUE, 45 , FieldType.TEXT);
     private static FieldDefinition DESCR_DEFINITION =
-            new FieldDefinition("Shortcut Description", Boolean.FALSE, 1024, FieldType.TEXT);
+            new FieldDefinition("Shortcut Description", Boolean.FALSE, 500, FieldType.TEXT);
     private static FieldDefinition CATEGORY_DEFINITION =
             new FieldDefinition("Category", Boolean.TRUE, 50, FieldType.TEXT);
     private static FieldDefinition IMAGE_URL_DEFINITION =
             new FieldDefinition("Image url", Boolean.FALSE, 2000, FieldType.TEXT);
     private static FieldDefinition DEFAULT_ENV_DEFINITION =
-            new FieldDefinition("Default Enviroment", Boolean.TRUE, 1024, FieldType.TEXT);
+            new FieldDefinition("Default Enviroment", Boolean.TRUE, 50, FieldType.TEXT);
     private static FieldDefinition ACCESS_INFO_DEFINITION =
             new FieldDefinition("Access Information", Boolean.FALSE, 1024, FieldType.TEXT);
 
@@ -116,7 +116,7 @@ public class ShortcutSheetParser extends AbstractSheetParser {
             parseTags(shortcut, row.getTags(), errors, row.getRowNum());
             parseImageUrl(shortcut, row.getImageURL(), errors, row.getRowNum());
             parseDefaultEnviroment(shortcut, row.getDefaultEnviroment(), errors, row.getRowNum());
-
+            shortcut.setAccessInformation(row.getAccessInformation());
 
             shortcutDataSheet.getShortcuts().add(shortcut);
             for (String role : roles) {

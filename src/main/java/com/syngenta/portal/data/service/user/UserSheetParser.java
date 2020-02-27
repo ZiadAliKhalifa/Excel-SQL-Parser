@@ -36,11 +36,11 @@ public class UserSheetParser extends AbstractSheetParser {
     private static FieldDefinition IMAGE_URL_DEFINITION =
             new FieldDefinition("Image url", Boolean.FALSE, 2000, FieldType.TEXT);
     private static FieldDefinition TACCOUNT_DEFINITION =
-            new FieldDefinition("t-account", Boolean.TRUE, 1024, FieldType.TEXT);
+            new FieldDefinition("t-account", Boolean.TRUE, 50, FieldType.TEXT);
     private static FieldDefinition REGION_DEFINITION =
-            new FieldDefinition("region ", Boolean.FALSE, 1024, FieldType.TEXT);
+            new FieldDefinition("region ", Boolean.FALSE, 50, FieldType.TEXT);
     private static FieldDefinition BUSSINESSuNIT_DEFINITION =
-            new FieldDefinition("Bussiness unit", Boolean.FALSE, 1024, FieldType.TEXT);
+            new FieldDefinition("Bussiness unit", Boolean.FALSE, 50, FieldType.TEXT);
     private static FieldDefinition ROLESDEFINITION =
             new FieldDefinition("roles", Boolean.TRUE, 5000, FieldType.TEXT);
 

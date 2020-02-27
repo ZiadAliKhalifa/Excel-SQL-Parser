@@ -14,6 +14,11 @@ public class Shortcut {
     private List<Link> links;
     private String imageURL;
     private String defaultEnviroment;
+
+    public void setAccessInformation(String accessInformation) {
+        this.accessInformation = accessInformation;
+    }
+
     private String accessInformation;
 
     public String getId() {
