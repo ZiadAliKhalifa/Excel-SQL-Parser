@@ -79,7 +79,7 @@ public class ShortcutEnviromentLinksSheetParser extends AbstractSheetParser {
         String shortcutName = "";
         for (LinkTemp row : tempParsedList) {
             Link link = new Link();
-            link.setCategory("Environment");
+            link.setCategory("Environments");
             shortcutName = parseModuleName(row.getUrlOwner(), errors, row.getRowNum(), shortcutDataSheet.getShortcutsMap());
             parseLinkName(link, row.getName(), errors, row.getRowNum());
             parseUrl(link, row.getUrl(), errors, row.getRowNum());
