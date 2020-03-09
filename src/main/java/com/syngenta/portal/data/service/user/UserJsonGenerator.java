@@ -33,6 +33,14 @@ public class UserJsonGenerator {
         return workspacesJson;
     }
 
+    public static JSONArray createRolesForUser(List<String> roleIds) {
+        JSONArray roleIdsJson = new JSONArray();
+        for (String wrs : roleIds) {
+            roleIdsJson.add(wrs);
+        }
+        return roleIdsJson;
+    }
+
     public static JSONObject createIdentifiers() {
         JSONObject identifiers = new JSONObject();
         identifiers.put("xrd_oid", "");

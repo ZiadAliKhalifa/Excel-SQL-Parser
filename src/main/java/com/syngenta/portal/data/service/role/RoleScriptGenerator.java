@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static com.syngenta.portal.data.service.JsonGenerator.createTags;
 import static com.syngenta.portal.data.service.role.RoleJsonGenerator.createShortcuts;
@@ -30,6 +31,7 @@ public class RoleScriptGenerator implements SheetScriptGenerator<RoleDataSheet> 
         ShortcutDataSheet shortcutDataSheet = (ShortcutDataSheet) referenceSheets[0];
         for (Role cg : dataSheet.getRoles()) {
             insertStatements.add("-- Create New Role " + cg.getName());
+            cg.setId(UUID.randomUUID().toString());
             String stmt = String.format(INSERT_ROLE, cg.getId(), getData(cg, shortcutDataSheet));
             insertStatements.add(stmt);
 

@@ -47,7 +47,7 @@ public class UserScriptGenerator implements SheetScriptGenerator<UserDataSheet> 
             List<String> workspaces = new ArrayList<>();
             List<String> workspacesStatments = getWorkspaces(cg, roleDataSheet, workspaces, shortcutDataSheet);
             insertStatements.addAll(workspacesStatments);
-            String stmt = String.format(INSERT_USER, cg.getId(), getData(cg, workspaces));
+            String stmt = String.format(INSERT_USER, cg.getId(), getData(cg, workspaces,roleDataSheet));
 
             insertStatements.add(stmt);
             dataSheet.getUserUUIDMap().put(cg.getTaccount().toUpperCase().trim(), cg.getId());
@@ -81,7 +81,7 @@ public class UserScriptGenerator implements SheetScriptGenerator<UserDataSheet> 
         return sampleObject.toJSONString();
     }
 
-    public static String getData(User cg, List<String> workspaces) {
+    public static String getData(User cg, List<String> workspaces, RoleDataSheet roleDataSheet) {
         JSONObject sampleObject = new JSONObject();
         sampleObject.put("firstName", SheetScriptGenerator.formatForSql(cg.getFirstName()));
         sampleObject.put("lastName", SheetScriptGenerator.formatForSql(cg.getLastName()));
@@ -90,9 +90,23 @@ public class UserScriptGenerator implements SheetScriptGenerator<UserDataSheet> 
         sampleObject.put("taccount", SheetScriptGenerator.trim(cg.getTaccount()));
         sampleObject.put("profile", createProfile(workspaces.iterator().next()));
         sampleObject.put("workspaceIds", createWorkspacesForUser(workspaces));
+        sampleObject.put("roleIds", createRolesForUser(getUserRoleIds(cg.getRoles(),roleDataSheet)));
         sampleObject.put("identifiers", createIdentifiers());
 
+
         return sampleObject.toJSONString();
+    }
+
+    private static List<String> getUserRoleIds(List<String> userRoles,RoleDataSheet roleDataSheet){
+        List<String> ids = new ArrayList<>();
+        for (String roleName : userRoles) {
+            Role role = roleDataSheet.getRoles().stream()
+                    .filter(r -> r.getName().trim().toUpperCase().equals(roleName.toUpperCase().trim()))
+                    .findFirst()
+                    .get();
+            ids.add(role.getId());
+        }
+        return ids;
     }
 
 }

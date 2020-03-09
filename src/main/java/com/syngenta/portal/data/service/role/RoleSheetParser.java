@@ -109,7 +109,7 @@ public class RoleSheetParser extends AbstractSheetParser {
 
     private void parseName(Role role, String value, List<String> errors, int rowNumber, Set<String> rolesSet) {
         role.setName(formatString(value));
-        role.setId(formatId(value));
+        //role.setId(formatId(value));
         validateField(NAME_DEFINITION, value, errors, rowNumber);
         if (value != null && !value.isEmpty() && !rolesSet.add(value.trim().toUpperCase())) {
             errors.add(String.format("Row %s, Role %s already exist", rowNumber, value));
