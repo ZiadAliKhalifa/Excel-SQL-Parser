@@ -16,6 +16,7 @@ import java.util.UUID;
 
 import static com.syngenta.portal.data.service.JsonGenerator.createTags;
 import static com.syngenta.portal.data.service.role.RoleJsonGenerator.createShortcuts;
+import static com.syngenta.portal.data.service.role.RoleJsonGenerator.createShortcutsObj;
 
 
 @Service
@@ -49,7 +50,8 @@ public class RoleScriptGenerator implements SheetScriptGenerator<RoleDataSheet> 
         sampleObject.put("description", SheetScriptGenerator.formatForSql(cg.getDescription()));
         sampleObject.put("tags", createTags( cg.getTags()));
         List<String> shortcuts = shortcutDataSheet.getRolesMap().get(cg.getName().trim().toUpperCase());
-        sampleObject.put("shortcutIds", createShortcuts(shortcuts, shortcutDataSheet.getShortcutUUIDMap()));
+       // sampleObject.put("shortcutIds", createShortcuts(shortcuts, shortcutDataSheet.getShortcutUUIDMap()));
+        sampleObject.put("shortcuts", createShortcutsObj(shortcuts, shortcutDataSheet.getShortcutUUIDMap()));
 
         return sampleObject.toJSONString();
     }
