@@ -4,3 +4,6 @@ drop table reference_data;
 drop table reference_data_type;
 drop table shortcut;
 drop table "role";
+drop table long_operation;
+drop table long_operation_type;
+drop table long_operation_status;

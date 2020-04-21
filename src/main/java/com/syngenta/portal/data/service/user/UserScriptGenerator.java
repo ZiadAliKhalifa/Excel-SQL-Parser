@@ -88,6 +88,7 @@ public class UserScriptGenerator implements SheetScriptGenerator<UserDataSheet> 
         sampleObject.put("email", SheetScriptGenerator.trim(cg.getEmail()));
         sampleObject.put("imageUrl", SheetScriptGenerator.trim(cg.getImageURL()));
         sampleObject.put("taccount", SheetScriptGenerator.trim(cg.getTaccount()));
+        sampleObject.put("region", SheetScriptGenerator.trim(cg.getRegion()));
         sampleObject.put("profile", createProfile(workspaces.iterator().next()));
         sampleObject.put("workspaceIds", createWorkspacesForUser(workspaces));
         sampleObject.put("roleIds", createRolesForUser(getUserRoleIds(cg.getRoles(),roleDataSheet)));

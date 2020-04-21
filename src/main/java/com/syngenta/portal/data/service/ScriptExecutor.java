@@ -28,7 +28,6 @@ public class ScriptExecutor {
     public boolean execute(File script) {
         dropTables();
         createTables();
-
         return executeScript(script);
     }
 
