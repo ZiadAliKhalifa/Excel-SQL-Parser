@@ -65,7 +65,7 @@ public class ShortcutScriptGenerator extends JsonGenerator implements SheetScrip
         sampleObject.put("tags", createTags(cg.getTags()));
         sampleObject.put("links", createLinks(cg.getLinks()));
         sampleObject.put("systemShortcut", true);
-        if(cg.getName().toLowerCase().contains("seeds gateway")||cg.getName().toLowerCase().contains("seedsgateway")) {
+        if(cg.getName().toLowerCase().contains("gateway")||cg.getName().toLowerCase().contains("gateway")) {
             sampleObject.put("adminShortcut", true);
         }else{
             sampleObject.put("adminShortcut", false);
@@ -74,3 +74,5 @@ public class ShortcutScriptGenerator extends JsonGenerator implements SheetScrip
     }
 
 }
+
+

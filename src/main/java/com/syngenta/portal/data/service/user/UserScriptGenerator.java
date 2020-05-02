@@ -37,11 +37,11 @@ public class UserScriptGenerator implements SheetScriptGenerator<UserDataSheet> 
         RoleDataSheet roleDataSheet = (RoleDataSheet) referenceSheets[0];
         ShortcutDataSheet shortcutDataSheet = (ShortcutDataSheet) referenceSheets[1];
         for (User cg : dataSheet.getUsers()) {
-            if (index == 0) {
-                cg.setId(FIRST_USER_UUID);
-            } else {
+//            if (index == 0) {
+//                cg.setId(FIRST_USER_UUID);
+//            } else {
                 cg.setId(UUID.randomUUID().toString());
-            }
+           // }
             insertStatements.add("-- Create New User " + cg.getFirstName() + " " + cg.getLastName());
             insertStatements.add("-- Create User Workspaces based on assigned roles");
             List<String> workspaces = new ArrayList<>();

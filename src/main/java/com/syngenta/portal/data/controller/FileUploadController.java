@@ -48,7 +48,7 @@ public class FileUploadController {
 
         try {
             results = dataLoadingService.run(file.getBytes());
-            //results.setEmailSentSuccessfully(mailService.sendEmail(mails, results));
+            results.setEmailSentSuccessfully(mailService.sendEmail(mails, results));
             if (results.isParsingSucceed()) {
                 results.setScriptApplied(scriptExecutor.execute(results.getScript()));
             }

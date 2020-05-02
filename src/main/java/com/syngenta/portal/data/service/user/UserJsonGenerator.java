@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class UserJsonGenerator {
-    final static String VIEW_TYPE = "Module";
+    final static String VIEW_TYPE = "Capability";
     final static String BGD_IMAGE = "background";
     final static String DEFAULT_COLOR = "black";
 
