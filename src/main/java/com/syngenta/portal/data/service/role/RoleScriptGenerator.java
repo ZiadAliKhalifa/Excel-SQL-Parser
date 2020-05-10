@@ -23,7 +23,7 @@ import static com.syngenta.portal.data.service.role.RoleJsonGenerator.createShor
 public class RoleScriptGenerator implements SheetScriptGenerator<RoleDataSheet> {
     private static final String INSERT_ROLE =
             "INSERT INTO \"role\" (ID,DATA,active,creation_date,created_by,last_modification_date,last_modified_by) "
-                    + "VALUES ('%s','%s',true,now(),'" + Constants.SYSTEM + "',now(),'" + Constants.SYSTEM + "');";
+                    + "VALUES ('%s','%s',true,now() AT TIME ZONE 'UTC','" + Constants.SYSTEM + "',now() AT TIME ZONE 'UTC','" + Constants.SYSTEM + "');";
 
 
     @Override

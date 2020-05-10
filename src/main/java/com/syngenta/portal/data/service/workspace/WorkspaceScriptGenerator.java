@@ -19,7 +19,7 @@ import static com.syngenta.portal.data.service.workspace.WorkspaceJsonGenerator.
 public class WorkspaceScriptGenerator implements SheetScriptGenerator<WorkspaceDataSheet> {
     private static final String INSERT_WORKSPACE =
             "INSERT INTO workspace (ID,DATA,active,creation_date,created_by,last_modification_date,last_modified_by) "
-                    + "VALUES ('%s','%s',true,now(),'%s',now(),'%s');";
+                    + "VALUES ('%s','%s',true,now() AT TIME ZONE 'UTC','%s',now() AT TIME ZONE 'UTC','%s');";
     private static final String UPDATE_USER_WORKSPACE =
             "UPDATE \"user\" SET data = jsonb_set(data, '{workspaceIds,99999}', '\"%s\"', TRUE) WHERE id = '%s';";
 

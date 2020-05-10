@@ -23,7 +23,7 @@ import static com.syngenta.portal.data.service.category.CategoryJsonGenerator.cr
 public class CategoryScriptGenerator implements SheetScriptGenerator<CategoryDataSheet> {
     private static final String INSERT_CATEGORY =
             "INSERT INTO reference_data (ID,TYPE,DATA,active,creation_date,created_by,last_modification_date,last_modified_by) "
-                    + "VALUES ('%s','CATEGORY','%s',true,now(),'"+ Constants.SYSTEM +"',now(),'"+ Constants.SYSTEM +"');";
+                    + "VALUES ('%s','CATEGORY','%s',true,now() AT TIME ZONE 'UTC','"+ Constants.SYSTEM +"',now() AT TIME ZONE 'UTC','"+ Constants.SYSTEM +"');";
 
 
     @Override

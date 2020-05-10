@@ -21,11 +21,11 @@ import static com.syngenta.portal.data.service.user.UserJsonGenerator.*;
 public class UserScriptGenerator implements SheetScriptGenerator<UserDataSheet> {
     private static final String INSERT_USER =
             "INSERT INTO \"user\" (ID,DATA,active,creation_date,created_by,last_modification_date,last_modified_by) "
-                    + "VALUES ('%s','%s',true,now(),'"+ Constants.SYSTEM +"',now(),'"+ Constants.SYSTEM +"');";
+                    + "VALUES ('%s','%s',true,now() AT TIME ZONE 'UTC','"+ Constants.SYSTEM +"',now() AT TIME ZONE 'UTC','"+ Constants.SYSTEM +"');";
 
     private static final String INSERT_WORKSPACE =
             "INSERT INTO workspace (ID,DATA,active,creation_date,created_by,last_modification_date,last_modified_by) "
-                    + "VALUES ('%s','%s',true,now(),'"+ Constants.SYSTEM +"',now(),'"+ Constants.SYSTEM +"');";
+                    + "VALUES ('%s','%s',true,now() AT TIME ZONE 'UTC','"+ Constants.SYSTEM +"',now() AT TIME ZONE 'UTC','"+ Constants.SYSTEM +"');";
 
 
     final static String FIRST_USER_UUID = "6ef1467e-7fe0-4c34-a5e9-5baded575c44";

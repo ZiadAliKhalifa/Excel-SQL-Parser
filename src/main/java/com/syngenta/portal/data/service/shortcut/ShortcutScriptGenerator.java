@@ -23,7 +23,7 @@ import java.util.UUID;
 public class ShortcutScriptGenerator extends JsonGenerator implements SheetScriptGenerator<ShortcutDataSheet> {
     private static final String INSERT_SHORTCUT =
             "INSERT INTO shortcut (ID,DATA,active,creation_date,created_by,last_modification_date,last_modified_by) "
-                    + "VALUES ('%s','%s',true,now(),'"+ Constants.SYSTEM +"',now(),'"+ Constants.SYSTEM +"');";
+                    + "VALUES ('%s','%s',true,now() AT TIME ZONE 'UTC','"+ Constants.SYSTEM +"',now() AT TIME ZONE 'UTC','"+ Constants.SYSTEM +"');";
 
 
     @Override
